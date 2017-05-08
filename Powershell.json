@@ -1,0 +1,88 @@
+{
+	"UMN Begin Block" : {
+		"prefix": "umnBegin",
+		"body": [
+			"begin {",
+			"	Write-Verbose \"[$((Get-Date).TimeofDay) BEGIN] Starting begin block of ${Description} in $(\\$mycommand.myinvocation)\"",
+			"	Write-Verbose \"[$((Get-Date).TimeofDay) END] Ending begin block of ${Description} in $(\\$mycommand.myinvocation)\"",
+			"}"
+		],
+		"description": "UMN standard begin block"
+	},
+
+	"UMN Process Block" : {
+		"prefix": "umnProcess",
+		"body": [
+			"process {",
+			"	Write-Verbose \"[$((Get-Date).TimeofDay) BEGIN] Starting process block of ${Description} in $(\\$mycommand.myinvocation)\"",
+			"	Write-Verbose \"[$((Get-Date).TimeofDay) END] Ending process block of ${Description} in $(\\$mycommand.myinvocation)\"",
+			"}"
+		],
+		"description": "UMN standard end block"
+	},
+
+	"UMN End Block" : {
+		"prefix": "umnEnd",
+		"body": [
+			"end {",
+			"	Write-Verbose \"[$((Get-Date).TimeofDay) BEGIN] Starting end block of ${Description} in $(\\$mycommand.myinvocation)\"",
+			"	Write-Verbose \"[$((Get-Date).TimeofDay) END] Ending end block of ${Description} in $(\\$mycommand.myinvocation)\"",
+			"}"
+		],
+		"description": "UMN standard end block"
+	},
+
+	"UMN Write-Verbose": {
+		"prefix": "umnWriteVerbose",
+		"body": "Write-Verbose \"[$((Get-Date).TimeofDay) INFO] ${Description} in $(\\$mycommand.myinvocation)\"",
+		"description": "UMN standard Write-Verbose call"
+	},
+
+	"UMN Function Definition": {
+		"prefix": "umnFunction",
+		"body": [
+			"Function ${Verb}-${Command} {",
+			"	<#",
+			"		.SYNOPSIS",
+			"			Short description",
+			"		.DESCRIPTION",
+			"			Long description",
+			"		.EXAMPLE",
+			"			Example of how to use the function",
+			"		.PARAMETER blah",
+			"			Description of parameter",
+			"		.NOTES",
+			"			General notes",
+			"	#>",
+			"	[CmdletBinding()]",
+			"	param(",
+			"",
+			"	)",
+			"	begin {",
+			"		Write-Verbose \"[$((Get-Date).TimeofDay) BEGIN] Starting begin block of ${Verb}-${Command} in $(\\$mycommand.myinvocation)\"",
+			"		Write-Verbose \"[$((Get-Date).TimeofDay) END] Ending begin block of ${Verb}-${Command} in $(\\$mycommand.myinvocation)\"",
+			"	} process {",
+			"		Write-Verbose \"[$((Get-Date).TimeofDay) BEGIN] Starting process block of ${Verb}-${Command} in $(\\$mycommand.myinvocation)\"",
+			"		Write-Verbose \"[$((Get-Date).TimeofDay) END] Ending process block of ${Verb}-${Command} in $(\\$mycommand.myinvocation)\"",
+			"	} end {",
+			"		Write-Verbose \"[$((Get-Date).TimeofDay) BEGIN] Starting end block of ${Verb}-${Command} in $(\\$mycommand.myinvocation)\"",
+			"		Write-Verbose \"[$((Get-Date).TimeofDay) END] Ending end block of ${Verb}-${Command} in $(\\$mycommand.myinvocation)\"",
+			"	}",
+			"} #END ${Verb}-${Command}"
+		],
+		"description": "UMN standard function"
+	},
+
+	"UMN Try Catch Block": {
+		"prefix": "try",
+		"body": [
+			"try {",
+			"	${CodeToTry}",
+			"} catch [${System.Exception}] {",
+			"	# Exception is stored in the automatic variable \\$_",
+			"	${ExceptionHandling}",
+			"}"
+		],
+		"description": "UMN Try Catch Block"
+	}
+}
